@@ -16,7 +16,7 @@ require_once 'System.Array.php';
 /**
  * Represents a strongly typed list of objects that can be accessed by index.
  */
-class GenericList extends \System\Object implements \System\Collections\IEnumerable
+class GenericList extends \System\BaseObject implements \System\Collections\IEnumerable
 {
     private $_items;
     private $_count;
@@ -270,7 +270,7 @@ class GenericList extends \System\Object implements \System\Collections\IEnumera
 /**
  * Represents a collection of keys and values.
  */
-class Dictionary extends \System\Object implements \System\Collections\IEnumerable
+class Dictionary extends \System\BaseObject implements \System\Collections\IEnumerable
 {
     private $_keys;
     private $_values;
@@ -465,5 +465,6 @@ class Dictionary extends \System\Object implements \System\Collections\IEnumerab
   }
 }
 
-// Create alias for backward compatibility (List is reserved in PHP 7.0+)
+// Create aliases for backward compatibility (List is reserved in PHP 7.0+)
 class_alias('System\\Collections\\Generic\\GenericList', 'System\\Collections\\Generic\\ListCollection');
+class_alias('System\\Collections\\Generic\\GenericList', 'System\\Collections\\Generic\\List');

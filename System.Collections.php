@@ -82,7 +82,7 @@ class ArrayEnumerator implements IEnumerator
   /**
  * Represents a collection of key/value pairs that are organized based on the hash code of the key.
  */
-class Hashtable extends \System\Object implements IEnumerable
+class Hashtable extends \System\BaseObject implements IEnumerable
 {
     private $_data;
     private $_count;

@@ -14,7 +14,7 @@ require_once 'System.Exception.php';
 /**
  * Represents a time interval (duration of time or elapsed time).
  */
-class TimeSpan extends Object
+class TimeSpan extends BaseObject
 {
     private $_totalSeconds;
     

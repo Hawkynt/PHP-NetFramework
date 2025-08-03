@@ -74,7 +74,7 @@ class Path {
   /**
  * Provides information about a file and methods for creating, copying, deleting, moving, and opening files.
  */
-class FileInfo extends \System\Object
+class FileInfo extends \System\BaseObject
 {
     private $_fullPath;
     
@@ -245,7 +245,7 @@ class FileInfo extends \System\Object
   /**
  * Provides information about a directory and methods for creating, moving, and enumerating through directories and subdirectories.
  */
-class DirectoryInfo extends \System\Object
+class DirectoryInfo extends \System\BaseObject
 {
     private $_fullPath;
     

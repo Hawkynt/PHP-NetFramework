@@ -11,7 +11,7 @@ namespace System;
  * Base class that provides fundamental functionality for all objects.
  * All classes in the System namespace should inherit from this class.
  */
-class Object
+class BaseObject
 {
     /**
    * Returns a string representation of the current object.
@@ -72,3 +72,6 @@ class Object
       return $objA === $objB;
   }
 }
+
+// Create alias for backward compatibility (Object is reserved in newer PHP)
+class_alias('System\\BaseObject', 'System\\Object');

@@ -16,7 +16,7 @@ require_once 'System.Exception.php';
 /**
  * Enhanced String class with comprehensive string manipulation capabilities.
  */
-class String extends Object
+class StringObject extends BaseObject
 {
     private $_value;
     
@@ -272,6 +272,9 @@ class String extends Object
           $stringValues[] = (string)$value;
       }
     }
-      return new String(implode($separator, $stringValues));
+      return new StringObject(implode($separator, $stringValues));
   }
 }
+
+// Create alias for backward compatibility (String conflicts with PHP)
+class_alias('System\\StringObject', 'System\\String');

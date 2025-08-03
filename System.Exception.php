@@ -14,7 +14,7 @@ require_once 'System.Object.php';
  * Base class for all exceptions in the System namespace.
  * Provides .NET-style exception functionality.
  */
-class Exception extends Object
+class Exception extends BaseObject
 {
     private $_message;
     private $_innerException;

@@ -14,7 +14,7 @@ namespace System\Diagnostics;
 /**
  * Provides a set of methods and properties that you can use to accurately measure elapsed time.
  */
-class Stopwatch extends \System\Object
+class Stopwatch extends \System\BaseObject
 {
     private $_startTime;
     private $_elapsedTime;
@@ -126,7 +126,7 @@ class Stopwatch extends \System\Object
 /**
  * Provides a set of methods and properties that help you trace the execution of your code.
  */
-class Trace extends \System\Object
+class Trace extends \System\BaseObject
 {
     private static $_listeners = array();
     

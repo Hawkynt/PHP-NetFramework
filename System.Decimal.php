@@ -15,7 +15,7 @@ require_once 'System.Exception.php';
  * Represents a decimal floating-point number with high precision.
  * Uses BCMath extension for arbitrary precision arithmetic when available.
  */
-class Decimal extends Object
+class Decimal extends BaseObject
 {
     private $_value;
     private $_scale;

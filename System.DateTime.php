@@ -1,8 +1,5 @@
 <?php
 
-require_once 'System.Object.php';
-require_once 'System.Exception.php';
-
 /**
  * System.DateTime - Date and time functionality
  *
@@ -11,10 +8,13 @@ require_once 'System.Exception.php';
  */
 namespace System;
 
+require_once 'System.Object.php';
+require_once 'System.Exception.php';
+
 /**
  * Represents an instant in time, typically expressed as a date and time of day.
  */
-class DateTime extends Object
+class DateTime extends BaseObject
 {
     private $_timestamp;
     

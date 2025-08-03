@@ -15,7 +15,7 @@ require_once 'System.Collections.php';
 /**
  * Enhanced array class that provides .NET-style array functionality with LINQ-like operations.
  */
-class ArrayCollection extends Object implements \System\Collections\IEnumerable
+class ArrayCollection extends BaseObject implements \System\Collections\IEnumerable
 {
     private $_data;
     
@@ -336,5 +336,6 @@ class ArrayCollection extends Object implements \System\Collections\IEnumerable
   }
 }
 
-// Create alias for backward compatibility (Array conflicts with PHP's array concept)
+// Create aliases for backward compatibility (Array conflicts with PHP's array concept)
 class_alias('System\\ArrayCollection', 'System\\SystemArray');
+class_alias('System\\ArrayCollection', 'System\\Array');

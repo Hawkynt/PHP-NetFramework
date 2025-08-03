@@ -14,7 +14,7 @@ require_once 'System.Exception.php';
 /**
  * Provides constants and static methods for trigonometric, logarithmic, and other common mathematical functions.
  */
-class Math extends Object
+class Math extends BaseObject
 {
     /**
    * Represents the ratio of the circumference of a circle to its diameter, specified by the constant, π.
