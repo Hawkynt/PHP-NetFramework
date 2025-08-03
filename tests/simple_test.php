@@ -10,12 +10,12 @@ try {
     require_once '../System.Object.php';
     require_once '../System.Exception.php';
     
-    $obj = new System\Object();
+    $obj = new System\BaseObject();
     echo "✅ Object: " . $obj->ToString() . "\n";
     
     // Test 2: String operations
     require_once '../System.php';
-    $str = new System\String("Hello World");
+    $str = new System\StringObject("Hello World");
     echo "✅ String: Length=" . $str->getLength() . ", Upper=" . $str->ToUpper()->ToString() . "\n";
     
     // Test 3: Math operations
@@ -40,14 +40,14 @@ try {
     
     // Test 7: Generic Collections
     require_once '../System.Collections.Generic.php';
-    $list = new System\Collections\Generic\List();
+    $list = new System\Collections\Generic\GenericList();
     $list->Add("item1");
     $list->Add("item2");
     echo "✅ Generic List: Count=" . $list->getCount() . "\n";
     
     // Test 8: Array with LINQ
     require_once '../System.Array.php';
-    $arr = new System\Array([1, 2, 3, 4, 5]);
+    $arr = new System\ArrayCollection([1, 2, 3, 4, 5]);
     $evens = $arr->Where(function($x) { return $x % 2 == 0; });
     echo "✅ LINQ Array: Count=" . $arr->getCount() . ", Evens=" . $evens->getCount() . "\n";
     

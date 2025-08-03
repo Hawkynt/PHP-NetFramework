@@ -27,7 +27,6 @@ class TimeSpan extends BaseObject
    * @param int $milliseconds The number of milliseconds
    */
     public function __construct($days = 0, $hours = 0, $minutes = 0, $seconds = 0, $milliseconds = 0){
-      parent::__construct();
       
       $this->_totalSeconds = 
         $days * 86400 +           // 24 * 60 * 60

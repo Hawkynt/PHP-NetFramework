@@ -39,7 +39,6 @@ class DateTime extends BaseObject
    * @param int $second The seconds (0 to 59)
    */
     public function __construct($year = null, $month = null, $day = null, $hour = 0, $minute = 0, $second = 0){
-      parent::__construct();
       
       if($year === null){
         $this->_timestamp = time();

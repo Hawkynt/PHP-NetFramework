@@ -14,9 +14,8 @@ require_once 'System.Object.php';
  * Base class for all exceptions in the System namespace.
  * Provides .NET-style exception functionality.
  */
-class Exception extends BaseObject
+class Exception extends \Exception
 {
-    private $_message;
     private $_innerException;
     private $_stackTrace;
     
@@ -26,18 +25,12 @@ class Exception extends BaseObject
    * @param Exception $innerException The exception that is the cause of the current exception
    */
     public function __construct($message = "", $innerException = null){
-      $this->_message = $message;
+      parent::__construct($message);
       $this->_innerException = $innerException;
       $this->_stackTrace = debug_backtrace();
   }
     
-    /**
-   * Gets the message that describes the current exception.
-   * @return string The error message
-   */
-    public function getMessage(){
-      return $this->_message;
-  }
+    // getMessage() inherited from PHP's Exception class
     
     /**
    * Gets the Exception instance that caused the current exception.

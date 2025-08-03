@@ -27,7 +27,6 @@ class GenericList extends \System\BaseObject implements \System\Collections\IEnu
    * @param int $capacity The initial capacity
    */
     public function __construct($capacity = 4){
-      parent::__construct();
       $this->_capacity = max(0, (int)$capacity);
       $this->_items = array();
       $this->_count = 0;
@@ -280,7 +279,6 @@ class Dictionary extends \System\BaseObject implements \System\Collections\IEnum
    * Initializes a new instance of the Dictionary class.
    */
     public function __construct(){
-      parent::__construct();
       $this->_keys = array();
       $this->_values = array();
       $this->_count = 0;
@@ -466,5 +464,4 @@ class Dictionary extends \System\BaseObject implements \System\Collections\IEnum
 }
 
 // Create aliases for backward compatibility (List is reserved in PHP 7.0+)
-class_alias('System\\Collections\\Generic\\GenericList', 'System\\Collections\\Generic\\ListCollection');
-class_alias('System\\Collections\\Generic\\GenericList', 'System\\Collections\\Generic\\List');
+// Note: Aliases removed due to PHP reserved word conflicts

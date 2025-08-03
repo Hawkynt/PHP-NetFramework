@@ -24,7 +24,6 @@ class Stopwatch extends \System\BaseObject
    * Initializes a new instance of the Stopwatch class.
    */
     public function __construct(){
-      parent::__construct();
       $this->_startTime = 0;
       $this->_elapsedTime = 0;
       $this->_isRunning = false;

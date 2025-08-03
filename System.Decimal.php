@@ -26,7 +26,6 @@ class Decimal extends BaseObject
    * @param int $scale The number of decimal places (default 10)
    */
     public function __construct($value = 0, $scale = 10){
-      parent::__construct();
       $this->_scale = max(0, (int)$scale);
       
       if($value instanceof Decimal){

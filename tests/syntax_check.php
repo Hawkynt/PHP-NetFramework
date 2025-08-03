@@ -37,14 +37,14 @@ echo "\n🎯 Now testing basic instantiation...\n";
 try {
     // Test each class can be instantiated
     require_once '../System.Object.php';
-    $obj = new System\Object();
+    $obj = new System\BaseObject();
     echo "✅ System\\Object instantiated\n";
     
     require_once '../System.Exception.php';
     echo "✅ System\\Exception classes loaded\n";
     
     require_once '../System.php';
-    $str = new System\String("test");
+    $str = new System\StringObject("test");
     echo "✅ System\\String instantiated\n";
     
     require_once '../System.Math.php';

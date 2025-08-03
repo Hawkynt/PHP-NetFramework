@@ -83,7 +83,6 @@ class FileInfo extends \System\BaseObject
    * @param string $fileName The fully qualified name of the file
    */
     public function __construct($fileName){
-      parent::__construct();
       if($fileName === null || trim($fileName) === ""){
         throw new \System\ArgumentException("File name cannot be null or empty");
     }
@@ -254,7 +253,6 @@ class DirectoryInfo extends \System\BaseObject
    * @param string $path The directory path
    */
     public function __construct($path){
-      parent::__construct();
       if($path === null || trim($path) === ""){
         throw new \System\ArgumentException("Path cannot be null or empty");
     }

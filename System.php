@@ -25,7 +25,6 @@ class StringObject extends BaseObject
    * @param string $value The string value
    */
     public function __construct($value = ""){
-      parent::__construct();
       $this->_value = (string)$value;
   }
     
@@ -105,7 +104,7 @@ class StringObject extends BaseObject
    * @return String A string equivalent to this string but with all instances of oldValue replaced with newValue
    */
     public function Replace($oldValue, $newValue){
-      return new String(str_replace($oldValue, $newValue, $this->_value));
+      return new StringObject(str_replace($oldValue, $newValue, $this->_value));
   }
     
     /**
@@ -117,7 +116,7 @@ class StringObject extends BaseObject
       $parts = explode($separator, $this->_value);
       $result = array();
       foreach($parts as $part){
-        $result[] = new String($part);
+        $result[] = new StringObject($part);
     }
       return $result;
   }
@@ -142,7 +141,7 @@ class StringObject extends BaseObject
         $result = substr($this->_value, $startIndex, $length);
     }
       
-      return new String($result);
+      return new StringObject($result);
   }
     
     /**
@@ -150,7 +149,7 @@ class StringObject extends BaseObject
    * @return String A string in lowercase
    */
     public function ToLower(){
-      return new String(strtolower($this->_value));
+      return new StringObject(strtolower($this->_value));
   }
     
     /**
@@ -158,7 +157,7 @@ class StringObject extends BaseObject
    * @return String A string in uppercase
    */
     public function ToUpper(){
-      return new String(strtoupper($this->_value));
+      return new StringObject(strtoupper($this->_value));
   }
     
     /**
@@ -166,7 +165,7 @@ class StringObject extends BaseObject
    * @return String A string with whitespace removed
    */
     public function Trim(){
-      return new String(trim($this->_value));
+      return new StringObject(trim($this->_value));
   }
     
     /**
@@ -174,7 +173,7 @@ class StringObject extends BaseObject
    * @return String A string with leading whitespace removed
    */
     public function TrimStart(){
-      return new String(ltrim($this->_value));
+      return new StringObject(ltrim($this->_value));
   }
     
     /**
@@ -182,7 +181,7 @@ class StringObject extends BaseObject
    * @return String A string with trailing whitespace removed
    */
     public function TrimEnd(){
-      return new String(rtrim($this->_value));
+      return new StringObject(rtrim($this->_value));
   }
     
     /**
@@ -276,5 +275,4 @@ class StringObject extends BaseObject
   }
 }
 
-// Create alias for backward compatibility (String conflicts with PHP)
-class_alias('System\\StringObject', 'System\\String');
+// Note: System\String alias removed due to PHP reserved word conflict

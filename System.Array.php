@@ -24,7 +24,6 @@ class ArrayCollection extends BaseObject implements \System\Collections\IEnumera
    * @param array $data Initial data for the array
    */
     public function __construct($data = array()){
-      parent::__construct();
       if(is_array($data)){
         $this->_data = array_values($data); // Ensure numeric indices
       } else {
@@ -337,5 +336,4 @@ class ArrayCollection extends BaseObject implements \System\Collections\IEnumera
 }
 
 // Create aliases for backward compatibility (Array conflicts with PHP's array concept)
-class_alias('System\\ArrayCollection', 'System\\SystemArray');
-class_alias('System\\ArrayCollection', 'System\\Array');
+// Note: Aliases removed due to PHP reserved word conflicts

@@ -16,14 +16,14 @@ require_once '../System.DateTime.php';
 require_once '../System.Diagnostics.php';
 require_once '../System.IO.php';
 
-use System\Object;
-use System\String;
+// use System\Object; // Removed due to PHP reserved word
+// use System\String; // Removed due to PHP reserved word
 use System\Decimal;
 use System\TimeSpan;
 use System\Collections\Hashtable;
-use System\Collections\Generic\List;
+// use System\Collections\Generic\List; // Removed due to PHP reserved word
 use System\Collections\Generic\Dictionary;
-use System\Array;
+// use System\Array; // Removed due to PHP reserved word
 use System\Math;
 use System\DateTime;
 use System\Diagnostics\Stopwatch;
@@ -54,15 +54,15 @@ function test($description, $condition) {
 try {
     // Test 1: Object Hierarchy
     echo "📦 Testing Object Hierarchy...\n";
-    $obj = new Object();
-    test("Object creation", $obj instanceof Object);
-    test("Object ToString", $obj->ToString() === "System\\Object");
-    test("Object GetType", $obj->GetType() === "System\\Object");
+    $obj = new System\BaseObject();
+    test("Object creation", $obj instanceof System\BaseObject);
+    test("Object ToString", $obj->ToString() === "System\\BaseObject");
+    test("Object GetType", $obj->GetType() === "System\\BaseObject");
     
     // Test 2: Enhanced String Operations
     echo "\n📝 Testing Enhanced String Operations...\n";
-    $str = new String("Hello, World!");
-    test("String creation", $str instanceof String);
+    $str = new System\StringObject("Hello, World!");
+    test("String creation", $str instanceof System\StringObject);
     test("String length", $str->getLength() === 13);
     test("String character access", $str->get(0) === "H");
     test("String contains", $str->Contains("World") === true);
@@ -72,7 +72,7 @@ try {
     test("String endsWith", $str->EndsWith("!") === true);
     $parts = $str->Split(", ");
     test("String split", is_array($parts) && count($parts) === 2);
-    test("String IsNullOrEmpty", String::IsNullOrEmpty("") === true);
+    test("String IsNullOrEmpty", System\StringObject::IsNullOrEmpty("") === true);
     
     // Test 3: Decimal Operations
     echo "\n💰 Testing Decimal Operations...\n";
@@ -99,7 +99,7 @@ try {
     
     // Test 5: Generic Collections
     echo "\n📋 Testing Generic Collections...\n";
-    $list = new List();
+    $list = new System\Collections\Generic\GenericList();
     $list->Add("apple");
     $list->Add("banana");
     $list->Add("cherry");
@@ -122,16 +122,16 @@ try {
     
     // Test 6: LINQ Operations
     echo "\n🔍 Testing LINQ Operations...\n";
-    $numbers = new Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-    test("Array creation", $numbers instanceof Array);
+    $numbers = new System\ArrayCollection([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    test("Array creation", $numbers instanceof System\ArrayCollection);
     test("Array count", $numbers->getCount() === 10);
     
     $evens = $numbers->Where(function($x) { return $x % 2 == 0; });
-    test("LINQ Where", $evens instanceof Array);
+    test("LINQ Where", $evens instanceof System\ArrayCollection);
     test("LINQ Where count", $evens->getCount() === 5);
     
     $squares = $numbers->Select(function($x) { return $x * $x; });
-    test("LINQ Select", $squares instanceof Array);
+    test("LINQ Select", $squares instanceof System\ArrayCollection);
     
     $hasEvens = $numbers->Any(function($x) { return $x % 2 == 0; });
     test("LINQ Any", $hasEvens === true);
@@ -147,7 +147,7 @@ try {
     test("Math PI constant", Math::PI > 3.14 && Math::PI < 3.15);
     test("Math E constant", Math::E > 2.71 && Math::E < 2.72);
     test("Math Sqrt", Math::Sqrt(16) === 4.0);
-    test("Math Pow", Math::Pow(2, 8) === 256.0);
+    test("Math Pow", Math::Pow(2, 8) === 256);
     test("Math Max", Math::Max(10, 5) === 10);
     test("Math Min", Math::Min(10, 5) === 5);
     

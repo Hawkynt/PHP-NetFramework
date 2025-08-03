@@ -91,7 +91,6 @@ class Hashtable extends \System\BaseObject implements IEnumerable
    * Initializes a new, empty instance of the Hashtable class.
    */
     public function __construct(){
-      parent::__construct();
       $this->_data = array();
       $this->_count = 0;
   }

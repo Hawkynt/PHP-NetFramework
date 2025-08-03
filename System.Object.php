@@ -74,4 +74,4 @@ class BaseObject
 }
 
 // Create alias for backward compatibility (Object is reserved in newer PHP)
-class_alias('System\\BaseObject', 'System\\Object');
+class_alias('System\\BaseObject', 'System\\SystemObject');
