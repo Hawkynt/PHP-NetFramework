@@ -1,9 +1,5 @@
 <?php
 
-require_once 'System.Object.php';
-require_once 'System.Exception.php';
-require_once 'System.Collections.php';
-
 /**
  * System.Array - Enhanced array class with LINQ-like methods
  *
@@ -12,10 +8,14 @@ require_once 'System.Collections.php';
  */
 namespace System;
 
+require_once 'System.Object.php';
+require_once 'System.Exception.php';
+require_once 'System.Collections.php';
+
 /**
  * Enhanced array class that provides .NET-style array functionality with LINQ-like operations.
  */
-class Array extends Object implements \System\Collections\IEnumerable
+class ArrayCollection extends Object implements \System\Collections\IEnumerable
 {
     private $_data;
     
@@ -335,3 +335,6 @@ class Array extends Object implements \System\Collections\IEnumerable
       return "Array[Count=" . count($this->_data) . "]";
   }
 }
+
+// Create alias for backward compatibility (Array conflicts with PHP's array concept)
+class_alias('System\\ArrayCollection', 'System\\SystemArray');

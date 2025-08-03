@@ -1,7 +1,5 @@
 <?php
 
-require_once 'System.Object.php';
-
 /**
  * System.Exception - Exception hierarchy for the System namespace
  *
@@ -9,6 +7,8 @@ require_once 'System.Object.php';
  * @author Hawkynt
  */
 namespace System;
+
+require_once 'System.Object.php';
 
 /**
  * Base class for all exceptions in the System namespace.

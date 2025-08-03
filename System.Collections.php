@@ -1,8 +1,5 @@
 <?php
 
-require_once 'System.Object.php';
-require_once 'System.Exception.php';
-
 /**
  * System.Collections - Collection classes and interfaces
  *
@@ -10,6 +7,9 @@ require_once 'System.Exception.php';
  * @author Hawkynt
  */
 namespace System\Collections;
+
+require_once 'System.Object.php';
+require_once 'System.Exception.php';
 
 /**
  * Defines a method to enumerate objects in a collection.

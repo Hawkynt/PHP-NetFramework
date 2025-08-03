@@ -1,8 +1,5 @@
 <?php
 
-require_once 'System.Object.php';
-require_once 'System.Exception.php';
-
 /**
  * System.Math - Mathematical functions and constants
  *
@@ -10,6 +7,9 @@ require_once 'System.Exception.php';
  * @author Hawkynt
  */
 namespace System;
+
+require_once 'System.Object.php';
+require_once 'System.Exception.php';
 
 /**
  * Provides constants and static methods for trigonometric, logarithmic, and other common mathematical functions.

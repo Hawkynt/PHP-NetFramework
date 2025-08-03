@@ -1,8 +1,5 @@
 <?php
 
-require_once 'System.Object.php';
-require_once 'System.Exception.php';
-
 /**
  * System.TimeSpan - Represents a time interval
  *
@@ -10,6 +7,9 @@ require_once 'System.Exception.php';
  * @author Hawkynt
  */
 namespace System;
+
+require_once 'System.Object.php';
+require_once 'System.Exception.php';
 
 /**
  * Represents a time interval (duration of time or elapsed time).

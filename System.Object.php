@@ -71,3 +71,4 @@ class Object
     public static function ReferenceEquals($objA, $objB){
       return $objA === $objB;
   }
+}

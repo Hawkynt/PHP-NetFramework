@@ -1,8 +1,5 @@
 <?php
 
-require_once 'System.Object.php';
-require_once 'System.Exception.php';
-
 /**
  * System.Decimal - High-precision decimal arithmetic
  *
@@ -10,6 +7,9 @@ require_once 'System.Exception.php';
  * @author Hawkynt
  */
 namespace System;
+
+require_once 'System.Object.php';
+require_once 'System.Exception.php';
 
 /**
  * Represents a decimal floating-point number with high precision.

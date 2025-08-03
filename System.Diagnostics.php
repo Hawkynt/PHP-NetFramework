@@ -227,3 +227,4 @@ class Trace extends \System\Object
     public static function Unindent(){
       // Simple implementation - would need to track and manage indent level properly
   }
+}

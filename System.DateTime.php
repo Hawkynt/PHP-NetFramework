@@ -299,3 +299,4 @@ class DateTime extends Object
     public function GetHashCode(){
       return md5($this->_timestamp);
   }
+}

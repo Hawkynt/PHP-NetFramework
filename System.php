@@ -1,8 +1,5 @@
 <?php
 
-require_once 'System.Object.php';
-require_once 'System.Exception.php';
-
 /**
  * System short summary.
  *
@@ -12,6 +9,9 @@ require_once 'System.Exception.php';
  * @author Hawkynt
  */
 namespace System;
+
+require_once 'System.Object.php';
+require_once 'System.Exception.php';
 
 /**
  * Enhanced String class with comprehensive string manipulation capabilities.

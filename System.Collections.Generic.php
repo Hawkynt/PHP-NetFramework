@@ -1,10 +1,5 @@
 <?php
 
-require_once 'System.Object.php';
-require_once 'System.Exception.php';
-require_once 'System.Collections.php';
-require_once 'System.Array.php';
-
 /**
  * System.Collections.Generic - Generic collection classes
  *
@@ -13,10 +8,15 @@ require_once 'System.Array.php';
  */
 namespace System\Collections\Generic;
 
+require_once 'System.Object.php';
+require_once 'System.Exception.php';
+require_once 'System.Collections.php';
+require_once 'System.Array.php';
+
 /**
  * Represents a strongly typed list of objects that can be accessed by index.
  */
-class List extends \System\Object implements \System\Collections\IEnumerable
+class GenericList extends \System\Object implements \System\Collections\IEnumerable
 {
     private $_items;
     private $_count;
@@ -463,3 +463,7 @@ class Dictionary extends \System\Object implements \System\Collections\IEnumerab
     }
       return -1;
   }
+}
+
+// Create alias for backward compatibility (List is reserved in PHP 7.0+)
+class_alias('System\\Collections\\Generic\\GenericList', 'System\\Collections\\Generic\\ListCollection');
