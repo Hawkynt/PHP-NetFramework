@@ -8,6 +8,9 @@
 echo "🧪 PHP-NetFramework Test Runner\n";
 echo "===============================\n\n";
 
+// Get the directory of this script to handle relative paths
+$scriptDir = dirname(__FILE__);
+
 $testFiles = [
     'syntax_check.php' => 'Syntax Validation',
     'simple_test.php' => 'Basic Functionality', 
@@ -16,15 +19,21 @@ $testFiles = [
 
 $totalTests = 0;
 $passedSuites = 0;
+$failedSuites = 0;
 $results = [];
 
 foreach ($testFiles as $file => $description) {
     echo "🔄 Running: $description ($file)\n";
     echo str_repeat("-", 50) . "\n";
     
-    if (!file_exists($file)) {
-        echo "❌ Test file not found: $file\n\n";
+    // Build full path to test file
+    $fullPath = $scriptDir . DIRECTORY_SEPARATOR . $file;
+    
+    if (!file_exists($fullPath)) {
+        echo "❌ Test file not found: $fullPath\n\n";
         $results[$file] = ['status' => 'missing', 'output' => 'File not found'];
+        $failedSuites++;
+        $totalTests++;
         continue;
     }
     
@@ -33,14 +42,16 @@ foreach ($testFiles as $file => $description) {
     $startTime = microtime(true);
     
     try {
-        include $file;
+        include $fullPath;
         $status = 'passed';
         $passedSuites++;
     } catch (Exception $e) {
         $status = 'failed';
+        $failedSuites++;
         echo "❌ Exception: " . $e->getMessage() . "\n";
     } catch (Error $e) {
         $status = 'error';
+        $failedSuites++;
         echo "💥 Fatal Error: " . $e->getMessage() . "\n";
     }
     
@@ -81,9 +92,9 @@ echo "\n📈 RESULTS\n";
 echo "----------\n";
 echo "Test Suites: $totalTests\n";
 echo "Passed: $passedSuites\n";
-echo "Failed: " . ($totalTests - $passedSuites) . "\n";
+echo "Failed: $failedSuites\n";
 
-if ($passedSuites === $totalTests) {
+if ($failedSuites === 0 && $totalTests > 0) {
     echo "\n🎉 ALL TEST SUITES PASSED!\n";
     echo "✅ PHP-NetFramework is working correctly.\n";
     echo "🚀 Framework is ready for production use!\n";

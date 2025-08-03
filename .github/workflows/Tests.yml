@@ -1,5 +1,5 @@
 # This workflow will run tests for the PHP-NetFramework project.
-name: PHP-NetFramework CI
+name: Tests(CI)
 
 on: [push, pull_request]
 
@@ -16,4 +16,4 @@ jobs:
         php-version: '8.2' # You can change this to your desired PHP version
 
     - name: Run tests
-      run: php tests/TestRunner.php
+      run: cd tests && php TestRunner.php
