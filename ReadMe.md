@@ -49,6 +49,12 @@ PHP-NetFramework/
 ├── System.Array.php               # Enhanced Array with LINQ methods
 ├── System.Diagnostics.php         # Stopwatch and Trace classes
 ├── System.IO.php                  # File/Directory operations (File, Path, FileInfo, DirectoryInfo)
+├── tests/                         # Comprehensive test suite
+│   ├── test_framework.php         # Complete integration tests
+│   ├── simple_test.php            # Basic functionality verification
+│   ├── syntax_check.php           # PHP syntax validation
+│   ├── TestRunner.php             # Automated test execution
+│   └── README.md                  # Test documentation
 └── [Future expansions]
     ├── System.Threading.php        # Threading support
     ├── System.Windows.Forms.php    # GUI components
@@ -307,6 +313,30 @@ $dirInfo->MoveTo("NewLocation");
 $dirInfo->Delete(true); // Recursive delete
 ?>
 ```
+
+## 🧪 Testing
+
+The framework includes a comprehensive test suite to verify functionality:
+
+### Quick Testing
+```bash
+# Run basic functionality test
+php tests/simple_test.php
+
+# Verify syntax of all files
+php tests/syntax_check.php
+```
+
+### Comprehensive Testing
+```bash
+# Run complete test suite
+php tests/test_framework.php
+
+# Run all tests with reporting
+php tests/TestRunner.php
+```
+
+See [`tests/README.md`](tests/README.md) for detailed testing documentation.
 
 ## 📦 Installation and Dependencies
 
