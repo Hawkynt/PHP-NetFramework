@@ -80,20 +80,34 @@ try {
 ?>
 ```
 
-### 📝 String Operations
+### 📝 Enhanced String Operations
 ```php
 <?php
 require_once 'System.php';
 use System\String;
 
-// String formatting (now inherits from Object)
-$formatted = String::Format("Hello {0}, you have {1} messages!", "John", 5);
-echo $formatted; // "Hello John, you have 5 messages!"
+// Create string instances
+$str = new String("Hello, World!");
+echo $str->getLength();           // 13
+echo $str->get(0);               // "H"
+echo $str->Contains("World");    // true
+echo $str->IndexOf("o");         // 4
 
-// Extended formatting with callbacks
-$data = ["name" => "Alice", "count" => 3];
-$result = String::FormatEx("Welcome {{name}}, {{count}} items found", $data);
-echo $result; // "Welcome Alice, 3 items found"
+// String manipulation
+$upper = $str->ToUpper();        // "HELLO, WORLD!"
+$parts = $str->Split(", ");      // Array of String objects
+$trimmed = $str->Trim();         // Removes whitespace
+$replaced = $str->Replace("World", "PHP"); // "Hello, PHP!"
+
+// Substring operations
+$sub = $str->Substring(7, 5);    // "World"
+echo $str->StartsWith("Hello"); // true
+echo $str->EndsWith("!");       // true
+
+// Static methods
+$formatted = String::Format("Hello {0}, you have {1} messages!", "John", 5);
+$joined = String::Join(", ", ["apple", "banana", "cherry"]);
+echo String::IsNullOrEmpty("");  // true
 ?>
 ```
 
@@ -101,16 +115,33 @@ echo $result; // "Welcome Alice, 3 items found"
 ```php
 <?php
 require_once 'System.Collections.php';
+require_once 'System.Collections.Generic.php';
 require_once 'System.Array.php';
 use System\Collections\Hashtable;
+use System\Collections\Generic\List;
+use System\Collections\Generic\Dictionary;
 use System\Array;
 
-// Hashtable operations
-$hash = new Hashtable();
-$hash->Add("user1", "John");
-$hash->Add("user2", "Jane");
-$exists = $hash->ContainsKey("user1");
-$users = $hash->Values()->ToArray();
+// Generic List operations
+$list = new List();
+$list->Add("apple");
+$list->Add("banana");
+$list->Add("cherry");
+$list->Insert(1, "blueberry");
+echo $list->getCount();          // 4
+echo $list->get(0);             // "apple"
+$list->Remove("banana");
+$array = $list->ToArray();
+
+// Generic Dictionary operations  
+$dict = new Dictionary();
+$dict->Add("name", "John");
+$dict->Add("age", 30);
+$dict->set("city", "New York");
+echo $dict->get("name");        // "John"
+$hasKey = $dict->ContainsKey("age");
+$value = null;
+$found = $dict->TryGetValue("city", $value);
 
 // LINQ operations on Arrays
 $numbers = new Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -128,11 +159,13 @@ $first = $numbers->First(function($x) { return $x > 5; });
 ?>
 ```
 
-### 🧮 Mathematical Operations
+### 🧮 Mathematical and Decimal Operations
 ```php
 <?php
 require_once 'System.Math.php';
+require_once 'System.Decimal.php';
 use System\Math;
+use System\Decimal;
 
 // Mathematical constants and functions
 echo Math::PI;                    // 3.14159...
@@ -141,14 +174,34 @@ $result = Math::Sqrt(16);         // 4
 $power = Math::Pow(2, 8);         // 256
 $rounded = Math::Round(3.7);      // 4
 $max = Math::Max(10, 5);          // 10
+
+// High-precision decimal arithmetic
+$price = new Decimal("19.99", 2);
+$tax = new Decimal("0.08", 2);
+$total = $price->Add($price->Multiply($tax));
+echo $total->ToString(2);         // "21.59"
+
+// Financial calculations with precision
+$principal = new Decimal("1000.00");
+$rate = new Decimal("0.05");
+$compound = $principal->Multiply($rate)->Add($principal);
+echo $compound->ToString();       // Precise calculation without floating-point errors
+
+// Decimal comparisons and operations
+$a = new Decimal("10.50");
+$b = new Decimal("10.49");
+echo $a->CompareTo($b);          // 1 (greater than)
+echo $a->Equals($b);             // false
 ?>
 ```
 
-### 📅 Date/Time Operations
+### 📅 Date/Time and TimeSpan Operations
 ```php
 <?php
 require_once 'System.DateTime.php';
+require_once 'System.TimeSpan.php';
 use System\DateTime;
+use System\TimeSpan;
 
 // Date/time creation and manipulation
 $now = DateTime::getNow();
@@ -162,6 +215,24 @@ $pastDate = $now->AddHours(-5);
 // Formatting and parsing
 echo $now->ToString("yyyy-MM-dd HH:mm:ss");
 $parsed = DateTime::Parse("2023-12-25 15:30:00");
+
+// TimeSpan for time intervals
+$duration = new TimeSpan(1, 2, 30, 45);  // 1 day, 2 hours, 30 minutes, 45 seconds
+echo $duration->getTotalHours();          // Total hours in the timespan
+echo $duration->ToString();               // "1.02:30:45.000"
+
+// TimeSpan arithmetic
+$start = DateTime::getNow();
+$end = $start->AddHours(5);
+// $elapsed = $end->Subtract($start);     // Would return TimeSpan
+
+// Creating TimeSpans from different units
+$hours = TimeSpan::FromHours(2.5);       // 2.5 hours
+$minutes = TimeSpan::FromMinutes(90);    // 90 minutes  
+$seconds = TimeSpan::FromSeconds(3600);  // 3600 seconds (1 hour)
+
+// TimeSpan parsing
+$parsed = TimeSpan::Parse("1.05:30:00"); // 1 day, 5 hours, 30 minutes
 ?>
 ```
 
@@ -185,14 +256,16 @@ Trace::WriteLineFormat("User {0} logged in at {1}", "John", $now->ToString());
 ?>
 ```
 
-### 📁 File Operations
+### 📁 File and Directory Operations
 ```php
 <?php
 require_once 'System.IO.php';
 use System\IO\File;
 use System\IO\Path;
+use System\IO\FileInfo;
+use System\IO\DirectoryInfo;
 
-// File operations
+// Static file operations
 $content = File::ReadAllText("example.txt");
 File::WriteAllBytes("output.bin", $binaryData);
 
@@ -200,6 +273,38 @@ File::WriteAllBytes("output.bin", $binaryData);
 $combined = Path::Combine("folder", "subfolder", "file.txt");
 $directory = Path::GetDirectoryName($combined);
 $filename = Path::GetFileNameWithoutExtension($combined);
+
+// FileInfo for detailed file operations
+$fileInfo = new FileInfo("document.pdf");
+if ($fileInfo->getExists()) {
+    echo $fileInfo->getLength();         // File size in bytes
+    echo $fileInfo->getExtension();      // ".pdf"
+    echo $fileInfo->getName();           // "document.pdf"
+    echo $fileInfo->getLastWriteTime()->ToString();
+    
+    // Copy, move, delete operations
+    $copy = $fileInfo->CopyTo("backup.pdf");
+    $fileInfo->MoveTo("archive/document.pdf");
+    $fileInfo->Delete();
+}
+
+// DirectoryInfo for directory operations
+$dirInfo = new DirectoryInfo("MyFolder");
+if (!$dirInfo->getExists()) {
+    $dirInfo->Create();
+}
+
+// Enumerate files and subdirectories
+$files = $dirInfo->GetFiles("*.txt");
+$subdirs = $dirInfo->GetDirectories();
+
+foreach ($files as $file) {
+    echo $file->getName() . " - " . $file->getLength() . " bytes\n";
+}
+
+// Directory operations
+$dirInfo->MoveTo("NewLocation");
+$dirInfo->Delete(true); // Recursive delete
 ?>
 ```
 
@@ -219,13 +324,16 @@ git clone https://github.com/Hawkynt/PHP-NetFramework.git
 # Include required files in your PHP project
 require_once 'path/to/PHP-NetFramework/System.Object.php';
 require_once 'path/to/PHP-NetFramework/System.Exception.php';
-require_once 'path/to/PHP-NetFramework/System.php';
-require_once 'path/to/PHP-NetFramework/System.Collections.php';
-require_once 'path/to/PHP-NetFramework/System.Array.php';
-require_once 'path/to/PHP-NetFramework/System.Math.php';
-require_once 'path/to/PHP-NetFramework/System.DateTime.php';
-require_once 'path/to/PHP-NetFramework/System.Diagnostics.php';
-require_once 'path/to/PHP-NetFramework/System.IO.php';
+require_once 'path/to/PHP-NetFramework/System.php';                    # Enhanced String
+require_once 'path/to/PHP-NetFramework/System.Decimal.php';            # High-precision decimals
+require_once 'path/to/PHP-NetFramework/System.TimeSpan.php';           # Time intervals
+require_once 'path/to/PHP-NetFramework/System.Collections.php';        # Basic collections
+require_once 'path/to/PHP-NetFramework/System.Collections.Generic.php'; # Generic List/Dictionary
+require_once 'path/to/PHP-NetFramework/System.Array.php';              # LINQ arrays
+require_once 'path/to/PHP-NetFramework/System.Math.php';               # Math functions
+require_once 'path/to/PHP-NetFramework/System.DateTime.php';           # Date/time
+require_once 'path/to/PHP-NetFramework/System.Diagnostics.php';        # Diagnostics
+require_once 'path/to/PHP-NetFramework/System.IO.php';                 # File/Directory I/O
 
 # Or include only what you need for your specific use case
 ```
