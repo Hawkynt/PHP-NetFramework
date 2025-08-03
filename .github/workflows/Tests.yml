@@ -1,0 +1,19 @@
+# This workflow will run tests for the PHP-NetFramework project.
+name: PHP-NetFramework CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2' # You can change this to your desired PHP version
+
+    - name: Run tests
+      run: php tests/TestRunner.php

@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-GPL_3.0-blue)](https://licenses.nuget.org/GPL-3.0-or-later)
 ![Language](https://img.shields.io/github/languages/top/Hawkynt/PHP-NetFramework?color=purple)
+[![Tests](https://github.com/Hawkynt/PHP-NetFramework/actions/workflows/Tests.yml/badge.svg)](https://github.com/Hawkynt/PHP-NetFramework/actions/workflows/Tests.yml)
 
 > 🚀 A comprehensive clone of the .NET Framework Base Class Library (BCL) implemented in pure PHP.
 
