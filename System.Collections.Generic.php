@@ -299,7 +299,7 @@ class Dictionary extends \System\BaseObject implements \System\Collections\IEnum
    * @return List A List containing the keys
    */
     public function getKeys(){
-      $keyList = new List();
+      $keyList = new GenericList();
       foreach($this->_keys as $key){
         $keyList->Add($key);
     }
@@ -311,7 +311,7 @@ class Dictionary extends \System\BaseObject implements \System\Collections\IEnum
    * @return List A List containing the values
    */
     public function getValues(){
-      $valueList = new List();
+      $valueList = new GenericList();
       foreach($this->_values as $value){
         $valueList->Add($value);
     }

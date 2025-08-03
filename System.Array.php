@@ -137,7 +137,7 @@ class ArrayCollection extends BaseObject implements \System\Collections\IEnumera
       foreach($this->_data as $index => $item){
         $result[] = call_user_func($selector, $item, $index);
     }
-      return new Array($result);
+      return new ArrayCollection($result);
   }
     
     /**
@@ -156,7 +156,7 @@ class ArrayCollection extends BaseObject implements \System\Collections\IEnumera
           $result[] = $item;
       }
     }
-      return new Array($result);
+      return new ArrayCollection($result);
   }
     
     /**
@@ -181,7 +181,7 @@ class ArrayCollection extends BaseObject implements \System\Collections\IEnumera
         array_multisort($keys, SORT_ASC, $data);
     }
       
-      return new Array($data);
+      return new ArrayCollection($data);
   }
     
     /**
@@ -206,7 +206,7 @@ class ArrayCollection extends BaseObject implements \System\Collections\IEnumera
         array_multisort($keys, SORT_DESC, $data);
     }
       
-      return new Array($data);
+      return new ArrayCollection($data);
   }
     
     /**

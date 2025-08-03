@@ -1,8 +1,5 @@
 <?php
 
-require_once 'System.Object.php';
-require_once 'System.Exception.php';
-
 /**
  * System.Diagnostics - Diagnostic and debugging functionality
  *
@@ -10,6 +7,9 @@ require_once 'System.Exception.php';
  * @author Hawkynt
  */
 namespace System\Diagnostics;
+
+require_once 'System.Object.php';
+require_once 'System.Exception.php';
 
 /**
  * Provides a set of methods and properties that you can use to accurately measure elapsed time.
