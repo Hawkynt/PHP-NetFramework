@@ -1,8 +1,17 @@
 # 🐘 PHP-NetFramework
 
-[![License](https://img.shields.io/badge/License-GPL_3.0-blue)](https://licenses.nuget.org/GPL-3.0-or-later)
-![Language](https://img.shields.io/github/languages/top/Hawkynt/PHP-NetFramework?color=purple)
-[![Tests](https://github.com/Hawkynt/PHP-NetFramework/actions/workflows/Tests.yml/badge.svg)](https://github.com/Hawkynt/PHP-NetFramework/actions/workflows/Tests.yml)
+[![License](https://img.shields.io/github/license/Hawkynt/PHP-NetFramework)](https://github.com/Hawkynt/PHP-NetFramework/blob/main/LICENSE)
+[![Language](https://img.shields.io/github/languages/top/Hawkynt/PHP-NetFramework?color=8957D5)](https://github.com/Hawkynt/PHP-NetFramework)
+
+[![CI](https://github.com/Hawkynt/PHP-NetFramework/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Hawkynt/PHP-NetFramework/actions/workflows/ci.yml)
+![Last Commit](https://img.shields.io/github/last-commit/Hawkynt/PHP-NetFramework?branch=main)
+![Activity](https://img.shields.io/github/commit-activity/m/Hawkynt/PHP-NetFramework)
+
+[![Stars](https://img.shields.io/github/stars/Hawkynt/PHP-NetFramework?color=FFD700)](https://github.com/Hawkynt/PHP-NetFramework/stargazers)
+[![Forks](https://img.shields.io/github/forks/Hawkynt/PHP-NetFramework?color=008080)](https://github.com/Hawkynt/PHP-NetFramework/network/members)
+[![Issues](https://img.shields.io/github/issues/Hawkynt/PHP-NetFramework)](https://github.com/Hawkynt/PHP-NetFramework/issues)
+![Code Size](https://img.shields.io/github/languages/code-size/Hawkynt/PHP-NetFramework?color=4CAF50)
+![Repo Size](https://img.shields.io/github/repo-size/Hawkynt/PHP-NetFramework?color=FF9800)
 
 > 🚀 A comprehensive clone of the .NET Framework Base Class Library (BCL) implemented in pure PHP.
 
