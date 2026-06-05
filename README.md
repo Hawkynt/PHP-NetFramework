@@ -13,9 +13,7 @@
 ![Code Size](https://img.shields.io/github/languages/code-size/Hawkynt/PHP-NetFramework?color=4CAF50)
 ![Repo Size](https://img.shields.io/github/repo-size/Hawkynt/PHP-NetFramework?color=FF9800)
 
-> 🚀 A comprehensive clone of the .NET Framework Base Class Library (BCL) implemented in pure PHP.
-
-## 📖 Overview
+> A comprehensive clone of the .NET Framework Base Class Library (BCL) implemented in pure PHP.
 
 PHP-NetFramework brings the familiar .NET programming model to PHP, providing a rich set of classes and APIs that mirror the .NET Framework's Base Class Library. This project enables developers to write PHP code using .NET-style patterns, object-oriented design, and familiar APIs, making it easier for .NET developers to transition to PHP while maintaining consistent programming practices.
 
@@ -71,7 +69,7 @@ PHP-NetFramework/
     └── System.DirectoryServices.php # Directory services
 ```
 
-## 💡 Usage Examples
+## 🚀 Usage Examples
 
 ### 🏗️ Object Hierarchy and Basic Operations
 ```php
@@ -427,12 +425,19 @@ When contributing to this project:
 5. **🌐 Networking**: HTTP client and web service functionality
 6. **🔐 Security**: Cryptography and authentication frameworks
 
-## 📄 License
-
-This project is licensed under the GNU Lesser General Public License v3.0 or later. This ensures the code remains free and open source while allowing integration into proprietary applications. See the LICENSE file for complete details.
-
-## 🆘 Support
+## 🆘 Getting Help
 
 - **🐛 Issues**: Report bugs and feature requests on the project's issue tracker
 - **📚 Documentation**: Comprehensive examples and API documentation
 - **👥 Community**: Open source community-driven development
+
+## ❤️ Support
+
+If this project saves you time or money, consider supporting its development:
+
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?logo=githubsponsors)](https://github.com/sponsors/Hawkynt)
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-00457C?logo=paypal)](https://www.paypal.me/hawkynt)
+
+## 📜 License
+
+Licensed under LGPL-3.0-or-later — see [LICENSE](LICENSE).
