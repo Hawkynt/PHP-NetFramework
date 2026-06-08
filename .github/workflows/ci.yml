@@ -1,7 +1,11 @@
-# This workflow will run tests for the PHP-NetFramework project.
-name: Tests(CI)
+name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_call: {}
 
 # Force JavaScript-based actions to run on Node 24 instead of the deprecated Node 20 ahead of
 # the 2026-06-16 hard cutover, until we bump each action to a Node-24-native major version.
@@ -9,16 +13,33 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
 
-    - name: Set up PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.2' # You can change this to your desired PHP version
+      # Required check: every source must parse. `php -l` exits non-zero on a
+      # syntax error, so a broken file blocks the merge.
+      - name: Syntax-check every PHP source
+        run: |
+          status=0
+          count=0
+          while IFS= read -r -d '' f; do
+            count=$((count + 1))
+            if ! php -l "$f"; then status=1; fi
+          done < <(find . -path ./.git -prune -o -name '*.php' -print0)
+          if [ "$count" -eq 0 ]; then
+            echo "::error::no .php files found — nothing was checked"
+            exit 1
+          fi
+          echo "$count PHP file(s) syntax-checked."
+          exit $status
 
-    - name: Run tests
-      run: cd tests && php TestRunner.php
+      # The bundled suite. The runner reports but does not yet gate (it always
+      # exits 0); kept visible so regressions surface in the log.
+      - name: Run test suite
+        run: cd tests && php TestRunner.php

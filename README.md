@@ -13,6 +13,10 @@
 ![Code Size](https://img.shields.io/github/languages/code-size/Hawkynt/PHP-NetFramework?color=4CAF50)
 ![Repo Size](https://img.shields.io/github/repo-size/Hawkynt/PHP-NetFramework?color=FF9800)
 
+[![Release](https://img.shields.io/github/v/release/Hawkynt/PHP-NetFramework)](https://github.com/Hawkynt/PHP-NetFramework/releases/latest)
+[![Nightly](https://img.shields.io/github/v/release/Hawkynt/PHP-NetFramework?include_prereleases&sort=date&filter=nightly-*&label=nightly&color=FF9800)](https://github.com/Hawkynt/PHP-NetFramework/releases)
+[![Downloads](https://img.shields.io/github/downloads/Hawkynt/PHP-NetFramework/total)](https://github.com/Hawkynt/PHP-NetFramework/releases)
+
 > A comprehensive clone of the .NET Framework Base Class Library (BCL) implemented in pure PHP.
 
 PHP-NetFramework brings the familiar .NET programming model to PHP, providing a rich set of classes and APIs that mirror the .NET Framework's Base Class Library. This project enables developers to write PHP code using .NET-style patterns, object-oriented design, and familiar APIs, making it easier for .NET developers to transition to PHP while maintaining consistent programming practices.

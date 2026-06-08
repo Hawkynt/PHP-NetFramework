@@ -27,8 +27,19 @@ area, tests under `tests/` driven by `tests/TestRunner.php` (plus
    `php tests/TestRunner.php` until green (what CI runs). Update the
    README's structure/usage sections when the public surface changes.
 2. **Commit** (rules above) and **push**.
-3. **Wait for CI** and fix until green. A pushed change isn't done while the
+3. **Wait for CI** and fix until green — the required gate is `php -l` over
+   every source (a syntax error blocks the merge); the bundled `TestRunner`
+   runs visibly but does not yet gate.
+4. **Wait for the nightly**: on `main`, a green CI run triggers `nightly.yml`,
+   which bundles the whole framework into `PHP-NetFramework.zip` and publishes
+   a `nightly-yyyyMMdd` prerelease (GFS-pruned). Watch it; if it fails, fix,
+   go to 1.
+5. **Loop until everything is green.** A pushed change isn't done while any
    workflow it triggered is red.
+
+Stable releases are **manual** (`gh workflow run release.yml`) — they publish
+the same bundle under a dated `vyyyyMMdd` tag. Never cut one unless asked.
+`CHANGELOG.md` is generated from commit subjects — never edit it by hand.
 
 ## Code conventions
 

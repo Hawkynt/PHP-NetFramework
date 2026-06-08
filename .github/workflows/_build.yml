@@ -1,0 +1,63 @@
+name: Build artifacts
+
+# Shared packaging block. Called by release.yml (manual dispatch) and
+# nightly.yml (auto, on CI success). Bundles the whole framework into a single
+# distributable archive so release and nightly never diverge.
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: Git ref/SHA to build (defaults to caller ref)
+        type: string
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+# Force JavaScript-based actions to run on Node 24 instead of the deprecated Node 20 ahead of
+# the 2026-06-16 hard cutover, until we bump each action to a Node-24-native major version.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      # Sanity: never package a source that doesn't parse.
+      - name: Syntax-check before packaging
+        run: |
+          status=0
+          while IFS= read -r -d '' f; do php -l "$f" || status=1; done \
+            < <(find . -path ./.git -prune -o -name '*.php' -print0)
+          exit $status
+
+      # Bundle the whole framework (every *.php + docs/licence) into one zip
+      # consumers can drop in and `require 'System.php';`.
+      - name: Package framework
+        run: |
+          mkdir -p dist staging/PHP-NetFramework
+          # all sources, preserving the tests/ subtree, excluding VCS/CI dirs
+          find . -name '*.php' -not -path './.git/*' -not -path './.github/*' -print0 \
+            | while IFS= read -r -d '' f; do
+                rel="${f#./}"
+                mkdir -p "staging/PHP-NetFramework/$(dirname "$rel")"
+                cp "$f" "staging/PHP-NetFramework/$rel"
+              done
+          cp README.md LICENSE staging/PHP-NetFramework/ 2>/dev/null || true
+          (cd staging && zip -qr ../dist/PHP-NetFramework.zip PHP-NetFramework)
+          echo "Packaged $(unzip -l dist/PHP-NetFramework.zip | tail -1)"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-artifacts
+          path: dist/*
+          if-no-files-found: error
