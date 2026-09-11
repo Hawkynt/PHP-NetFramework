@@ -21,6 +21,16 @@
 
 PHP-NetFramework brings the familiar .NET programming model to PHP, providing a rich set of classes and APIs that mirror the .NET Framework's Base Class Library. This project enables developers to write PHP code using .NET-style patterns, object-oriented design, and familiar APIs, making it easier for .NET developers to transition to PHP while maintaining consistent programming practices.
 
+## 🧭 Vision
+
+PHP has a standard library assembled by accretion: a thousand global functions with inconsistent
+argument orders and no shared vocabulary for collections. This is the .NET base class library rebuilt
+in pure PHP — `List<T>`, `Dictionary<K,V>`, LINQ, delegates, events — with the same names and the same
+semantics.
+
+It exists so knowledge ports even where code cannot: someone who knows the .NET library should be
+able to write PHP without relearning it. Pure PHP, no extensions.
+
 ## ✨ Features
 
 ### ✅ Fully Implemented
@@ -45,35 +55,18 @@ PHP-NetFramework brings the familiar .NET programming model to PHP, providing a 
 - **🖥️ GUI Components**: MessageBox and dialog functionality
 - **🏢 Directory Services**: Active Directory integration and authentication
 
-## 📂 Project Structure
+## 📦 Installation
 
-```
-PHP-NetFramework/
-├── System.php                     # Enhanced String class with comprehensive methods
-├── System.Object.php              # Base Object class for all objects
-├── System.Exception.php           # Complete exception hierarchy
-├── System.Math.php                # Mathematical functions and constants
-├── System.Decimal.php             # High-precision decimal arithmetic
-├── System.TimeSpan.php            # Time interval representation
-├── System.DateTime.php            # Date/time functionality
-├── System.Collections.php         # Hashtable, IEnumerable, IEnumerator
-├── System.Collections.Generic.php # Generic List and Dictionary
-├── System.Array.php               # Enhanced Array with LINQ methods
-├── System.Diagnostics.php         # Stopwatch and Trace classes
-├── System.IO.php                  # File/Directory operations (File, Path, FileInfo, DirectoryInfo)
-├── tests/                         # Comprehensive test suite
-│   ├── test_framework.php         # Complete integration tests
-│   ├── simple_test.php            # Basic functionality verification
-│   ├── syntax_check.php           # PHP syntax validation
-│   ├── TestRunner.php             # Automated test execution
-│   └── README.md                  # Test documentation
-└── [Future expansions]
-    ├── System.Threading.php        # Threading support
-    ├── System.Windows.Forms.php    # GUI components
-    └── System.DirectoryServices.php # Directory services
+Clone the repository and require what you need; there is nothing to compile and no extension to
+build.
+
+```php
+require_once 'path/to/PHP-NetFramework/System.php';
 ```
 
-## 🚀 Usage Examples
+The dependency picture is in [Dependencies](#-dependencies) below.
+
+## 🚀 Quick start
 
 ### 🏗️ Object Hierarchy and Basic Operations
 ```php
@@ -326,6 +319,34 @@ $dirInfo->Delete(true); // Recursive delete
 ?>
 ```
 
+## 📂 Project Structure
+
+```
+PHP-NetFramework/
+├── System.php                     # Enhanced String class with comprehensive methods
+├── System.Object.php              # Base Object class for all objects
+├── System.Exception.php           # Complete exception hierarchy
+├── System.Math.php                # Mathematical functions and constants
+├── System.Decimal.php             # High-precision decimal arithmetic
+├── System.TimeSpan.php            # Time interval representation
+├── System.DateTime.php            # Date/time functionality
+├── System.Collections.php         # Hashtable, IEnumerable, IEnumerator
+├── System.Collections.Generic.php # Generic List and Dictionary
+├── System.Array.php               # Enhanced Array with LINQ methods
+├── System.Diagnostics.php         # Stopwatch and Trace classes
+├── System.IO.php                  # File/Directory operations (File, Path, FileInfo, DirectoryInfo)
+├── tests/                         # Comprehensive test suite
+│   ├── test_framework.php         # Complete integration tests
+│   ├── simple_test.php            # Basic functionality verification
+│   ├── syntax_check.php           # PHP syntax validation
+│   ├── TestRunner.php             # Automated test execution
+│   └── README.md                  # Test documentation
+└── [Future expansions]
+    ├── System.Threading.php        # Threading support
+    ├── System.Windows.Forms.php    # GUI components
+    └── System.DirectoryServices.php # Directory services
+```
+
 ## 🧪 Testing
 
 The framework includes a comprehensive test suite to verify functionality:
@@ -350,7 +371,32 @@ php tests/TestRunner.php
 
 See [`tests/README.md`](tests/README.md) for detailed testing documentation.
 
-## 📦 Installation and Dependencies
+## 👯 Sister projects
+
+This project is part of a multi-language effort to bring .NET Framework functionality to various programming languages:
+
+- **🐪 [Perl-NetFramework](https://github.com/Hawkynt/Perl-NetFramework)** - .NET BCL implementation in Perl
+- **🐘 [PHP-NetFramework](https://github.com/Hawkynt/PHP-NetFramework)** - .NET BCL implementation in PHP
+
+## 🗺️ Roadmap
+
+### ✅ **Phase 1: Core Foundation (COMPLETED)**
+1. **🏗️ Core Types**: Object, String, Math, DateTime ✅
+2. **📦 Collections**: Array, Hashtable, IEnumerable/IEnumerator ✅
+3. **🔍 LINQ**: Query operators and enumerable extensions ✅
+4. **📁 I/O**: File system and path operations ✅
+5. **⚠️ Exceptions**: Comprehensive exception hierarchy ✅
+6. **🔧 Diagnostics**: Stopwatch and Trace functionality ✅
+
+### 🚧 **Phase 2: Advanced Features (FUTURE)**
+1. **🧵 Threading**: Advanced thread support and synchronization primitives
+2. **🖥️ GUI Components**: MessageBox and dialog functionality
+3. **🏢 Directory Services**: Active Directory integration and authentication
+4. **📊 Data Access**: Database connectivity and ORM-like features
+5. **🌐 Networking**: HTTP client and web service functionality
+6. **🔐 Security**: Cryptography and authentication frameworks
+
+## 🔌 Dependencies
 
 This is a pure PHP implementation requiring no compilation or external dependencies beyond standard PHP.
 
@@ -380,14 +426,14 @@ require_once 'path/to/PHP-NetFramework/System.IO.php';                 # File/Di
 # Or include only what you need for your specific use case
 ```
 
-## 🤝 Sister Projects
+## 🛠️ Building
 
-This project is part of a multi-language effort to bring .NET Framework functionality to various programming languages:
+```bash
+php -l System.php     # syntax check
+./run-tests.sh        # the test suite
+```
 
-- **🐪 [Perl-NetFramework](https://github.com/Hawkynt/Perl-NetFramework)** - .NET BCL implementation in Perl
-- **🐘 [PHP-NetFramework](https://github.com/Hawkynt/PHP-NetFramework)** - .NET BCL implementation in PHP
-
-## 🛠️ Development and Contributing
+## 🤝 Contributing
 
 ### 🏛️ Architecture Principles
 - **Object-Oriented Design**: Classes follow .NET naming conventions and design patterns
@@ -410,24 +456,6 @@ When contributing to this project:
 - Use PHP-style camelCase for private methods (prefixed with underscore)
 - Include comprehensive documentation following PHPDoc standards
 - Maintain namespace organization matching .NET Framework structure
-
-## 🗺️ Roadmap
-
-### ✅ **Phase 1: Core Foundation (COMPLETED)**
-1. **🏗️ Core Types**: Object, String, Math, DateTime ✅
-2. **📦 Collections**: Array, Hashtable, IEnumerable/IEnumerator ✅
-3. **🔍 LINQ**: Query operators and enumerable extensions ✅
-4. **📁 I/O**: File system and path operations ✅
-5. **⚠️ Exceptions**: Comprehensive exception hierarchy ✅
-6. **🔧 Diagnostics**: Stopwatch and Trace functionality ✅
-
-### 🚧 **Phase 2: Advanced Features (FUTURE)**
-1. **🧵 Threading**: Advanced thread support and synchronization primitives
-2. **🖥️ GUI Components**: MessageBox and dialog functionality
-3. **🏢 Directory Services**: Active Directory integration and authentication
-4. **📊 Data Access**: Database connectivity and ORM-like features
-5. **🌐 Networking**: HTTP client and web service functionality
-6. **🔐 Security**: Cryptography and authentication frameworks
 
 ## 🆘 Getting Help
 

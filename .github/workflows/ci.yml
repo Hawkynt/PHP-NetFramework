@@ -43,3 +43,13 @@ jobs:
       # exits 0); kept visible so regressions surface in the log.
       - name: Run test suite
         run: cd tests && php TestRunner.php
+
+  # A text lint over README.md against the house convention — no build, no toolchain — so it
+  # runs beside the rest rather than inside it and cannot mask them.
+  repo-readme:
+    name: repo README
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: Hawkynt/RepositoryTemplate/repo-readme@v1
